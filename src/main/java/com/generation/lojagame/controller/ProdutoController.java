@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
 import javax.validation.Valid;
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,16 @@ public class ProdutoController {
     }
 
 
+
+    @GetMapping("/precoMaior/{preco}")
+    public ResponseEntity<List<Produto>> getPreco(@PathVariable BigDecimal preco){
+        return ResponseEntity.ok(produtoRepository.findByPrecoGreaterThanOrderByPrecoAsc(preco));
+    }
+
+    @GetMapping("/precoMenor/{preco}")
+    public ResponseEntity<List<Produto>> getPrecoM(@PathVariable BigDecimal preco){
+        return ResponseEntity.ok(produtoRepository.findByPrecoLessThanOrderByPrecoDesc(preco));
+    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Produto> getById(@PathVariable Long id) {

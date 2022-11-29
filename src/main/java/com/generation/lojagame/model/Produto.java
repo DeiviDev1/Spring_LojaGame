@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import java.math.BigDecimal;
 
 @Entity
 @Table( name = "tb_produtos")
@@ -26,7 +27,7 @@ public class Produto {
     private String descricao;
 
     @NotNull( message = " Atributo preço é obrigatorio")
-    private Float preco;
+    private BigDecimal preco;
 
     public Long getId() {
         return id;
@@ -52,11 +53,11 @@ public class Produto {
         this.descricao = descricao;
     }
 
-    public Float getPreco() {
+    public BigDecimal getPreco() {
         return preco;
     }
 
-    public void setPreco(Float preco) {
+    public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
 }
