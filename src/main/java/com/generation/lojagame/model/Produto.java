@@ -3,6 +3,8 @@ package com.generation.lojagame.model;
 
 
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -28,6 +30,19 @@ public class Produto {
 
     @NotNull( message = " Atributo preço é obrigatorio")
     private BigDecimal preco;
+
+    @ManyToMany
+    @JsonIgnoreProperties("produto")
+    private Categoria categoria;
+
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 
     public Long getId() {
         return id;
@@ -60,4 +75,7 @@ public class Produto {
     public void setPreco(BigDecimal preco) {
         this.preco = preco;
     }
+
+
+
 }
