@@ -1,10 +1,12 @@
 package com.generation.lojagame.model;
 
 
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+
+
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table( name = "tb_produtos")
@@ -15,15 +17,16 @@ public class Produto {
     @NotNull
     private Long id;
 
-    @NotBlank(message = "o atributo  produto é obrigatório!")
-    @Size(min = 3, max = 100, message =  "O atributo produto deve conter no mínimo 03 e no máximo 100 caracteres")
+    @NotBlank(message = "o atributo  nome é obrigatórioe e nao poder ser vazio!")
+    @Size(min = 3, max = 50, message =  "O atributo nome deve conter no mínimo 3 e no máximo 50 caracteres")
     private String nome;
 
 
-    @Size(min = 10, max = 100, message =  "O atributo produto deve conter no mínimo 10 e no máximo 100 caracteres")
+    @NotNull(message = "o atributo descrição pode ser vazio!")
+    @Size(min = 5, max = 100, message =  "O atributo descrição deve conter no mínimo 5 e no máximo 100 caracteres")
     private String descricao;
 
-    @NotNull( message = "o atributo preço não pode ser vazio")
+    @NotNull( message = " Atributo preço é obrigatorio")
     private Float preco;
 
     public Long getId() {
