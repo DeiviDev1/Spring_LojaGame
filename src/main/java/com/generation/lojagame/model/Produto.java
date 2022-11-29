@@ -31,7 +31,7 @@ public class Produto {
     @NotNull( message = " Atributo preço é obrigatorio")
     private BigDecimal preco;
 
-    @ManyToMany
+    @ManyToOne
     @JsonIgnoreProperties("produto")
     private Categoria categoria;
 

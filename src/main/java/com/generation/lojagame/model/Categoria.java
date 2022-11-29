@@ -17,8 +17,8 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "obrigatório")
-    @Size( min = 3, max = 15, message = "o atributo tipo deve conter no minino 3 e maximo 15 caracteres!")
+
+    @Size( min = 3, max = 50, message = "o atributo tipo deve conter no minino 3 e maximo 15 caracteres!")
     private String tipo;
 
     @OneToMany(mappedBy = "categoria", cascade = CascadeType.REMOVE)
